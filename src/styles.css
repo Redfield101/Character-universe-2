@@ -1,0 +1,323 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  font-family: Inter, Arial, sans-serif;
+  color: #f5f5f7;
+  background: #080a0f;
+}
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  width: 100%;
+}
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 20% 0%,
+      rgba(108, 80, 180, 0.18),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 100% 20%,
+      rgba(45, 120, 180, 0.12),
+      transparent 30%
+    ),
+    #080a0f;
+}
+button,
+input,
+textarea {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+.app {
+  min-height: 100vh;
+}
+.header {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 26px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  background: rgba(8,10,15,.82);
+  backdrop-filter: blur(18px);
+  position: relative;
+  z-index: 10;
+}
+.logo {
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+.logo span {
+  opacity: .45;
+}
+.tagline {
+  margin-top: 5px;
+  color: #858c98;
+  font-size: 11px;
+}
+.helpButton {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.12);
+  color: white;
+  background: rgba(255,255,255,.06);
+}
+.workspace {
+  min-height: calc(100vh - 76px);
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 420px;
+}
+.characterArea {
+  min-height: calc(100vh - 76px);
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(255,255,255,.08),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(100,80,160,.14),
+      transparent 45%
+    );
+}
+.characterArea::after {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 8%;
+  height: 1px;
+  background: rgba(255,255,255,.1);
+}
+.characterLabel {
+  position: absolute;
+  left: 25px;
+  bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 15px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.09);
+  background: rgba(8,10,15,.7);
+  backdrop-filter: blur(12px);
+  z-index: 3;
+}
+.characterLabel strong {
+  font-size: 15px;
+}
+.characterLabel span {
+  font-size: 11px;
+  color: #8a919d;
+}
+.controlPanel {
+  min-height: calc(100vh - 76px);
+  overflow-y: auto;
+  border-left: 1px solid rgba(255,255,255,.08);
+  background: rgba(10,12,18,.94);
+}
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: rgba(10,12,18,.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.tabs button {
+  border: 0;
+  background: transparent;
+  color: #777e8a;
+  padding: 16px 4px;
+  font-size: 10px;
+  font-weight: 800;
+}
+.tabs button.active {
+  color: white;
+  box-shadow: inset 0 -2px white;
+}
+.content {
+  padding: 25px 23px 45px;
+}
+.content h1 {
+  margin: 0;
+  font-size: 23px;
+  letter-spacing: -.03em;
+}
+.content p {
+  color: #858c98;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 9px 0 24px;
+}
+.content label {
+  display: block;
+  margin: 20px 0 9px;
+  color: #aeb4bf;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.chips button {
+  padding: 9px 11px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.09);
+  color: #b9bec8;
+  background: rgba(255,255,255,.035);
+  font-size: 11px;
+}
+.chips button.selected {
+  color: white;
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.35);
+}
+.content input:not([type="color"]),
+.content textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 11px;
+  border: 1px solid rgba(255,255,255,.1);
+  outline: none;
+  color: white;
+  background: rgba(255,255,255,.045);
+}
+.content textarea {
+  min-height: 85px;
+  resize: vertical;
+  line-height: 1.5;
+}
+.content input:focus,
+.content textarea:focus {
+  border-color: rgba(255,255,255,.3);
+}
+.content input[type="color"] {
+  width: 65px;
+  height: 42px;
+  padding: 3px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 10px;
+  background: transparent;
+}
+.feature {
+  display: grid;
+  grid-template-columns: 35px 1fr;
+  column-gap: 10px;
+  padding: 15px;
+  margin-top: 11px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.035);
+  font-size: 20px;
+}
+.feature strong {
+  font-size: 13px;
+  align-self: center;
+}
+.feature span {
+  grid-column: 2;
+  color: #838b98;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(0,0,0,.67);
+  backdrop-filter: blur(12px);
+}
+.tutorial {
+  width: min(420px,100%);
+  padding: 32px;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: #11141c;
+  box-shadow: 0 25px 80px rgba(0,0,0,.55);
+}
+.tutorialEmoji {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  border-radius: 17px;
+  background: rgba(255,255,255,.08);
+  font-size: 27px;
+  margin-bottom: 23px;
+}
+.tutorial h2 {
+  margin: 0;
+  font-size: 24px;
+}
+.tutorial p {
+  color: #9299a5;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.startButton {
+  width: 100%;
+  padding: 13px;
+  margin-top: 10px;
+  border: 0;
+  border-radius: 12px;
+  background: white;
+  color: #08090c;
+  font-weight: 800;
+}
+@media (max-width: 900px) {
+  .workspace {
+    display: block;
+  }
+  .characterArea {
+    height: 60vh;
+    min-height: 440px;
+  }
+  .controlPanel {
+    min-height: auto;
+    border-left: 0;
+    border-top: 1px solid rgba(255,255,255,.08);
+  }
+}
+@media (max-width: 560px) {
+  .header {
+    padding: 0 15px;
+  }
+  .logo {
+    font-size: 14px;
+  }
+  .tagline {
+    font-size: 9px;
+  }
+  .characterArea {
+    min-height: 410px;
+  }
+  .content {
+    padding: 22px 17px 35px;
+  }
+  .tabs button {
+    font-size: 9px;
+  }
+}
